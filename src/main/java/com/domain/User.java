@@ -14,8 +14,8 @@ public class User {
     @Column(name="id")
     private Long id;
 
-    @Column(name="name")
-    private String name;
+    @Column(name= "nickname")
+    private String nickname;
 
     @Column(name="loginname")
     private String loginname;
@@ -26,4 +26,7 @@ public class User {
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @Column(name="activate")
+    private boolean activeStatus;
 }

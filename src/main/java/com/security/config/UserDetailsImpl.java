@@ -9,12 +9,12 @@ import java.util.Collection;
 import java.util.List;
 
 public class UserDetailsImpl implements UserDetails {
-    private String login;
+    private String username;
     private String password;
     private List<GrantedAuthority> authorities;
 
     public UserDetailsImpl(User user){
-        this.login = user.getLoginname();
+        this.username = user.getLoginname();
         this.password = user.getPassword();
         this.authorities= List.of(new SimpleGrantedAuthority(user.getRole().name()));
     }
@@ -30,7 +30,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return login;
+        return username;
     }
 
     @Override

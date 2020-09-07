@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <include file="liquibase/changelogs/1_init_users_changelog.xml"/>
+    <include file="liquibase/changelogs/2_init_adverts_changelog.xml"/>
+    <include file="liquibase/changelogs/3_init_history_changelog.xml"/>
+    <include file="liquibase/changelogs/5_populate_users_changelog.xml"/>
+    <include file="liquibase/changelogs/6_populate_adverts_changelog.xml"/>
+    <!-- заготовка на будущее
+    <include file="liquibase/changelogs/7_init_vehicle_changelog.xml "/>
+     <include file="liquibase/changelogs/8_populate_vehicles_changelog.xml "/>
+     <include file="liquibase/changelogs/9_init_vehicle_changelog.xml "/>
+     -->
+
+
+
+    <!-- <include file="liquibase/changelogs/ "/> -->
+</databaseChangeLog>

@@ -1,0 +1,3 @@
+id,nickname,loginname,password,role,activate
+1,"nicknick","usr","usr","USER",0
+2,"boss","admin","admin","ADMIN",1

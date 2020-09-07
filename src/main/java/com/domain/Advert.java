@@ -32,6 +32,4 @@ public class Advert {
     @Column(name="model")
     private String model;
 
-    @Column(name="cost")
-    private BigDecimal cost;
 }

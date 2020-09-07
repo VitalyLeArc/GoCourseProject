@@ -17,9 +17,9 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
     @Override
-    public UserDetails loadUserByUsername(String loginname) throws UsernameNotFoundException{
-        User user = userRepository.findByLoginname(loginname)
-                .orElseThrow(()-> new EntityNotFoundException("Not found login = "+ loginname));
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+        User user = userRepository.findUserByLoginname(username)
+                .orElseThrow(()-> new EntityNotFoundException("Not found login = "+ username));
         UserDetailsImpl userDetails= new UserDetailsImpl(user);
 
         return userDetails;

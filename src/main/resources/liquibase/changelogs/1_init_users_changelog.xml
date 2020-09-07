@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+<changeSet id="1" author="Vitaly">
+    <createTable tableName="user" schemaName="courseproject">
+        <column autoIncrement="true" name="id" type="INTEGER">
+            <constraints primaryKey="true" primaryKeyName="id"/>
+        </column>
+        <column name="nickname" type="VARCHAR(50)"/>
+        <column name="loginname" type="VARCHAR(50)"/>
+        <column name="password" type="VARCHAR(100)"/>
+        <column name="role" type="ENUM('USER','ADMIN')"/>
+        <column name="activate" type="boolean"/>
+    </createTable>
+</changeSet>
+
+
+</databaseChangeLog>
