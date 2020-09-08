@@ -19,9 +19,5 @@ public class AdvertController  {
     public List<Advert> getAllAdverts(){
         return advertService.findAllAdverts();
     }
-/*
-    @GetMapping
-    public List<Advert> getAdvertsByParam(){
-        return List.of();
-    }*/
+
 }

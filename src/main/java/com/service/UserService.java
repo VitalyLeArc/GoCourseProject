@@ -17,7 +17,7 @@ public class UserService {
     public List<User> findAllUser(){
         return userRepository.findAll();
     }
-    //не проверял
+
     public User findUserById(Long id){
         return userRepository.findById(id).orElse(null);
     }
@@ -26,6 +26,8 @@ public class UserService {
         User user = userRepository.findUserByLoginname(login).orElse(null);
         user.setActiveStatus(true);
         userRepository.save(user);
-
+    }
+    public void createUser(User user){
+        userRepository.save(user);
     }
 }

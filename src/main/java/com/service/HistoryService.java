@@ -30,7 +30,7 @@ public class HistoryService {
     }
 
     public List<History> findAllHistoryByUserid(User user){
-        return historyRepository.findAllByUserId(user.getId()).orElse(List.of());
+        return historyRepository.findAllByUserId(user.getId());
     }
     public void switchShowSimilarHistoryById(History history){
 

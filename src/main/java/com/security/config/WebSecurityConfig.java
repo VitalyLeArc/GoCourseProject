@@ -52,8 +52,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()  //к базовой странице у всех
                 .anyRequest().authenticated()
                 .and().formLogin()
-                //.and().exceptionHandling().authenticationEntryPoint(jwtAuthEntryPoint) //мешает логиниться, надо разобраться как подружить с GET страницы login
-                //.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //без предыдущей строки логин не запоминается
+                .and().exceptionHandling().authenticationEntryPoint(jwtAuthEntryPoint)                 //мешает логиниться, надо разобраться как подружить с GET страницы login
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)      //без предыдущей строки логин не запоминается
                 ;
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
