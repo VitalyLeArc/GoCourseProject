@@ -1,6 +1,6 @@
 package com.domain;
 
-import com.domain.enums.UserRole;
+import com.domain.parts.UserRole;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,6 +12,7 @@ public class User {
 
     @Id
     @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name= "nickname")

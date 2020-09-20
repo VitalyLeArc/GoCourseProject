@@ -1,27 +1,24 @@
 package com.domain;
 
-import com.domain.parts.CarBody;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-@Table(name = "history")
-public class History {
+@Entity
+@Table(name="history")
+public class Search {
     @Id
     @Column(name = "id")
     private Long id;
 
     @Column(name = "user_id")
     private Long userId;
-
-    @Column(name = "showsimilar")
-    private boolean showSimilar;
-
-    @Column(name = "date")
-    private LocalDateTime date;
 
     @Column(name = "vehicletype")
     private int body;
@@ -35,7 +32,4 @@ public class History {
     @Column(name = "fueltype")
     private int vehicleType;
 
-    public boolean getShowSimilar(){
-        return showSimilar;
-    }
 }

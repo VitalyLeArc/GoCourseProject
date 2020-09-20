@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+<changeSet id="12" author="Vitaly">
+    <renameColumn tableName="history" columnDataType="int" oldColumnName="brand" newColumnName="mark"/>
+    <renameColumn tableName="history" columnDataType="int" oldColumnName="model" newColumnName="fueltype"/>
+    <renameColumn tableName="history" columnDataType="int" oldColumnName="type" newColumnName="body"/>
+    <renameColumn tableName="history" columnDataType="int" oldColumnName="vehicle" newColumnName="vehicleType"/>
+</changeSet>
+</databaseChangeLog>

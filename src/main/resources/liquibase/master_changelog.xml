@@ -10,12 +10,9 @@
     <include file="liquibase/changelogs/3_init_history_changelog.xml"/>
     <include file="liquibase/changelogs/5_populate_users_changelog.xml"/>
     <include file="liquibase/changelogs/6_populate_adverts_changelog.xml"/>
-    <!-- заготовка на будущее
-    <include file="liquibase/changelogs/7_init_vehicle_changelog.xml "/>
-     <include file="liquibase/changelogs/8_populate_vehicles_changelog.xml "/>
-     <include file="liquibase/changelogs/9_init_vehicle_changelog.xml "/>
-     -->
-
+    <include file="liquibase/changelogs/10_drop_adverts_changelog.xml"/>
+    <include file="liquibase/changelogs/11_modify_history_changelog.xml"/>
+    <include file="liquibase/changelogs/12_modify_history_changelog.xml"/>
 
 
     <!-- <include file="liquibase/changelogs/ "/> -->

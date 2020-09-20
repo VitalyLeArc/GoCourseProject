@@ -11,5 +11,6 @@ import java.util.Optional;
 public interface HistoryRepository extends JpaRepository<History,Long> {
 
     List<History> findAllByUserId(Long id);
+    List<History> findAllByUserIdAndShowSimilarTrue(Long id);
 
 }

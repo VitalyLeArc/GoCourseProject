@@ -1,6 +1,5 @@
 package com.service;
 
-import com.domain.Advert;
 import com.domain.History;
 import com.domain.User;
 import com.repository.HistoryRepository;
@@ -17,22 +16,16 @@ public class HistoryService {
 
     History history;
     private LocalDate localDate;
-//очень грубо И топорно
-    //нужна ещё одна связанная таблица куда будет просто кидаться просто запрос или тупо записывать строку JSON
-    public void saveOneSearchInHistory(Advert advert,User user){
-        localDate = LocalDate.now();
-        history.setUserId(user.getId());
-        history.setBrand(advert.getBrand());
-        history.setModel(advert.getModel());
-        history.setType(advert.getType());
-        history.setVehicle(advert.getVehicle());
-        historyRepository.save(history);
-    }
 
-    public List<History> findAllHistoryByUserid(User user){
+    public List<History> findAllHistoryByUserid(User user) {
         return historyRepository.findAllByUserId(user.getId());
     }
-    public void switchShowSimilarHistoryById(History history){
 
+    public List<History> findAllHistoryByUseridAndSimilarTrue(User user){
+        return historyRepository.findAllByUserIdAndShowSimilarTrue(user.getId());
+    }
+    public void switchShowSimilarHistoryById(History history) {
+        history.setShowSimilar(!history.getShowSimilar());
+        historyRepository.save(history);
     }
 }

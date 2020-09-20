@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8">
+    <title>Main page</title>
+</head>
+<body>
+<h1>Welcome on CourseProject - searcher with RIA API</h1>
+<br>
+<br>
+<table>
+    <tr>
+        <th width="350"></th>
+        <th width="200"></th>
+    </tr>
+    <tr>
+        <td>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button><a th:href="@{/search}">Search</a></button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button><a th:href="@{/cabinet}">My cabinet</a></button>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>

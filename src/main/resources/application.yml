@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    username: root1
+    password: root1
+    url: jdbc:mysql://localhost:3306/courseproject?serverTimezone=UTC
+
+  jpa:
+    properties:
+      hibernate: show-sql=true
+    database: mysql
+
+  liquibase:
+    change-log: classpath:/liquibase/master_changelog.xml
+
+  mvc:
+    view:
+      prefix: /views/
+      suffix: .html
