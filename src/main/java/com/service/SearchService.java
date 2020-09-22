@@ -16,7 +16,7 @@ public class SearchService {
 private RequestRiaService requestRiaService;
 
 public List<Search> searchOnRia(Search reqSearch){
-    requestRiaService.createRiaRequest(reqSearch);
+    requestRiaService.findOnRia(reqSearch);
     return List.of();
 }
 }
