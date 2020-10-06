@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Column;
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -24,20 +25,34 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    //вспомогательный метод
+    private User getUserByName(String username){
+        return userRepository.findUserByLoginname(username)
+                .orElseThrow(()->new UsernameNotFoundException("Not found"+username));
+    }
+
+    public Long getUserIdByName(String username){
+        return getUserByName(username).getId();
+    }
+
     public List<User> findAllUser(){
         return userRepository.findAll();
     }
 
-    public User findUserById(Long id){
-        return userRepository.findById(id).orElse(null);
+    public User getUserById(Long id){
+        return userRepository.findById(id)
+                .orElseThrow(()->new UsernameNotFoundException("Does not exist ID "+id));
     }
 
-    public void activateUser (String login){
-        User user = userRepository.findUserByLoginname(login).orElse(null);
-        user.setActiveStatus(true);
-        userRepository.save(user);
+    public void activateUser (String username, Principal principal){
+        if(getUserByName(principal.getName()).getRole()==UserRole.ADMIN) {
+            User user = getUserByName(username);
+            user.setActiveStatus(true);
+            userRepository.save(user);
+        }
     }
     public void createUser(User user){
+        user.setActiveStatus(false); //чтоб наверняка
         userRepository.save(user);
     }
 

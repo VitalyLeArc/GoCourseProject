@@ -20,20 +20,18 @@ public class History {
     @Column(name = "showsimilar")
     private boolean showSimilar;
 
-    @Column(name = "date")
-    private LocalDateTime date;
-
-    @Column(name = "vehicletype")
-    private int body;
 
     @Column(name = "body")
+    private int body;
+
+    @Column(name = "fueltype")
     private int fuelType;
 
     @Column(name = "mark")
     private int mark;
 
-    @Column(name = "fueltype")
-    private int vehicleType;
+    @Column(name = "vehicletype")
+    private int category;
 
     public boolean getShowSimilar(){
         return showSimilar;

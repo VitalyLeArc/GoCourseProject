@@ -6,6 +6,38 @@
     <title>search</title>
 </head>
 <body>
-Форма с полями для поиска
+<button><a href="/">Home</a></button>
+<form action="#" th:action="@{/search_request}" th:object="${search}" method="post">
+    <p>Now only PKW available!<input id="categoryID" name="categoryID" value = "1" hidden = "true"/></p>
+    <p>Body Type:
+        <select id="bodyID" name="bodyID">
+            <option selected value="-1">!! Select !!</option>
+            <th:block th:each="body : ${carBody}">
+                <option th:value="${body.getValue()}" th:utext="${body.getName()}"></option>
+            </th:block>
+        </select>
+    <p style="color: red"> * should be selected</p></p>
+    <p>Mark:
+        <select id="markID" name="markID">
+            <option selected value="-1">!! Select !!</option>
+            <th:block th:each="mark : ${marks}">
+                <option th:value="${mark.getValue()}" th:utext="${mark.getName()}"></option>
+            </th:block>
+        </select>
+    <p style="color: #b16d38"> * should be selected</p>
+    </p>
+
+
+    <p>Type of fuel:
+        <select id="fuelTypeID" name="fuelTypeID">
+            <option selected value="-1">!! Select !!</option>
+            <th:block th:each="fuelType : ${fuelTypes}">
+                <option th:value="${fuelType.getValue()}" th:utext="${fuelType.getName()}"></option>
+            </th:block>
+        </select>
+    </p>
+    <input type="submit" value="Search">
+</form>
+<button><a href="/search_request">hardcode simple request</a></button>
 </body>
 </html>

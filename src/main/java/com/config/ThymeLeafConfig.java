@@ -25,8 +25,8 @@ public class ThymeLeafConfig {
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
     }
-
-    private ClassLoaderTemplateResolver templateResolver() {
+    @Bean
+    public ClassLoaderTemplateResolver templateResolver() {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setPrefix("/views/");
         templateResolver.setSuffix(".html");
