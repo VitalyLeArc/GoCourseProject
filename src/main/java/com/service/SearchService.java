@@ -30,9 +30,8 @@ public void saveSearchRequestInHistory(Search search, Principal principal){
     search.setDate(LocalDateTime.now());
     searchRepository.save(search);
 }
-public List<Search> getHistoryByUserId(Principal principal){
-    return searchRepository.findAllByUserIdAndShowSimilarTrue(
-                    userService.getUserIdByName(principal.getName()));
+public List<Search> getHistoryByUserId(Long userid){
+    return searchRepository.findAllByUserIdAndShowSimilarTrue(userid);
 }
 
 }

@@ -16,7 +16,7 @@
                 <option th:value="${body.getValue()}" th:utext="${body.getName()}"></option>
             </th:block>
         </select>
-    <p style="color: red"> * should be selected</p></p>
+
     <p>Mark:
         <select id="markID" name="markID">
             <option selected value="-1">!! Select !!</option>
@@ -24,9 +24,6 @@
                 <option th:value="${mark.getValue()}" th:utext="${mark.getName()}"></option>
             </th:block>
         </select>
-    <p style="color: #b16d38"> * should be selected</p>
-    </p>
-
 
     <p>Type of fuel:
         <select id="fuelTypeID" name="fuelTypeID">

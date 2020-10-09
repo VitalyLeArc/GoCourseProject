@@ -31,12 +31,16 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(()->new UsernameNotFoundException("Not found"+username));
     }
 
+    public UserRole getUserRoleByName(String username){
+        return getUserByName(username).getRole();
+    }
+
     public Long getUserIdByName(String username){
         return getUserByName(username).getId();
     }
 
-    public List<User> findAllUser(){
-        return userRepository.findAll();
+    public List<User> findAllUser(Principal principal){
+            return userRepository.findAll();
     }
 
     public User getUserById(Long id){
@@ -44,12 +48,10 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(()->new UsernameNotFoundException("Does not exist ID "+id));
     }
 
-    public void activateUser (String username, Principal principal){
-        if(getUserByName(principal.getName()).getRole()==UserRole.ADMIN) {
+    public void activateUser (String username){
             User user = getUserByName(username);
             user.setActiveStatus(true);
             userRepository.save(user);
-        }
     }
     public void createUser(User user){
         user.setActiveStatus(false); //чтоб наверняка

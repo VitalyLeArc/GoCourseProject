@@ -1,5 +1,8 @@
 package com.domain;
 
+import com.domain.parts.CarBody;
+import com.domain.parts.FuelType;
+import com.domain.parts.Marks;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -38,5 +41,17 @@ public class Search {
     @Column(name = "date")
     private LocalDateTime date;
 
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        if (body != -1) {
+            sb.append("Тип кузова: ");
+            sb.append(CarBody.getNameByValue(body));
+            sb.append(", топливо: ");
+            sb.append(FuelType.getNameByValue(fuelType));
+            sb.append(", марка: ");
+            sb.append(Marks.getNameByValue(mark));
+        }
+        return sb.toString();
+    }
 }
