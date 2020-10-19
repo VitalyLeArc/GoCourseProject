@@ -33,11 +33,21 @@ class RequestRiaService {
     @Autowired
     JsonRiaParser jsonRiaParser;
 
-    // Управляет методами для составления запроса на риа, выполнения запроса на риа,
-    // парсинга полученных жсонов от риа
+    //Основные методы
     public List<Vehicle> findOnRia(Search search){
+        return doRiaRequestAndGetVehicles(createRiaRequest(search));
+    }
+    /*public List<Vehicle> findNewOnRia(Search search){
+        String riaRequest = createRiaRequest(search)+"&"; //Дата публикации больше даты старого поиска
+        return doRiaRequestAndGetVehicles(riaRequest);
+    }*/
+
+    // Вспомогательные методы
+    // Вызывает выполненение запроса на риа, вызывает парсинг полученных жсонов от риа
+    private List<Vehicle> doRiaRequestAndGetVehicles (String request){
         try {
-            List<String> vehicles_id = jsonRiaParser.getListVehiclesIdFromRiaJson(doRiaRequest(createRiaRequest(search)));
+            List<String> vehicles_id = jsonRiaParser
+                    .getListVehiclesIdFromRiaJson(doRiaRequest(request));
             List<String> vehiclesJson = new ArrayList<>();
             for (String v:vehicles_id) {
 //              log.info(v);
@@ -58,7 +68,6 @@ class RequestRiaService {
         }
         return null;
     }
-
     //составляет запрос корректный для РИА из параметров поиска
     private String createRiaRequest(Search search){
         StringBuilder sb = new StringBuilder();

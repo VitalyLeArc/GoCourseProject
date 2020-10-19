@@ -10,9 +10,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
+
 @Entity
 @Table(name="history")
 public class Search {
@@ -39,7 +40,7 @@ public class Search {
     private boolean showSimilar;
 
     @Column(name = "date")
-    private LocalDateTime date;
+    private LocalDate date;
 
     @Override
     public String toString() {

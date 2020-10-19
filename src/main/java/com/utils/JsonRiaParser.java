@@ -7,6 +7,7 @@ import org.apache.tomcat.util.json.JSONParser;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class JsonRiaParser {
         vehicle.setMarkName(jsonObject.getString("markName"));
         vehicle.setModelName(jsonObject.getString("modelName"));
         vehicle.setCostUsd(jsonObject.getInt("USD"));
+        vehicle.setAddDate(LocalDate.parse(jsonObject.getString("addDate")));
         return vehicle;
     }
     //Из всего жсона с результатами поиска по фильтру на риа выдирает только айди объявлений

@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SearchService {
@@ -27,11 +28,36 @@ public List<Vehicle> searchOnRia(Search reqSearch){
 public void saveSearchRequestInHistory(Search search, Principal principal){
     search.setUserId(userService.getUserIdByName(principal.getName()));
     search.setShowSimilar(true);
-    search.setDate(LocalDateTime.now());
+    saveSearch(search);
+}
+private void saveSearch(Search search){
+    search.setDate(LocalDate.now());
     searchRepository.save(search);
 }
+
+/////////
+
 public List<Search> getHistoryByUserId(Long userid){
-    return searchRepository.findAllByUserIdAndShowSimilarTrue(userid);
+    return searchRepository.findAllByUserId(userid);
+}
+
+//ищет все новые объявления для всех поисков
+public List<Vehicle> searchNewForUserHistory(Long userid){
+    List<Search> searches = searchRepository.findAllByUserIdAndShowSimilarTrue(userid);
+    List<Vehicle> vehicles = searches.stream()
+            .flatMap(search -> searchNewSimilar(search).stream())
+            .collect(Collectors.toList());
+    return vehicles;
+}
+
+//ищет все новые объявления соответствующие одному поиску
+public List<Vehicle> searchNewSimilar(Search search){
+    saveSearch(search);                                         //обновляет дату последнего поиска
+    return requestRiaService.findOnRia(search)
+            .stream()                                           //удалить после проверки
+            .filter(v->                                         //https://habr.com/ru/company/luxoft/blog/270383/
+                v.getAddDate().compareTo(search.getDate())>=0)  //https://beginnersbook.com/2017/10/java-localdate-compareto-method-example/
+            .collect(Collectors.toList());
 }
 
 }

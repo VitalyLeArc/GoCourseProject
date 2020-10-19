@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface SearchRepository extends JpaRepository <Search,Long> {
     List<Search> findAllByUserIdAndShowSimilarTrue(Long userId);
+    List<Search> findAllByUserId(Long userId);
 }
