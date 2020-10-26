@@ -4,6 +4,7 @@ package com.service;
 import com.domain.Search;
 import com.domain.Vehicle;
 import com.repository.SearchRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class SearchService {
 @Autowired
     private SearchRepository searchRepository;
@@ -28,10 +30,15 @@ public List<Vehicle> searchOnRia(Search reqSearch){
 public void saveSearchRequestInHistory(Search search, Principal principal){
     search.setUserId(userService.getUserIdByName(principal.getName()));
     search.setShowSimilar(true);
+    log.info("mark"+search.getMark());
     saveSearch(search);
 }
 private void saveSearch(Search search){
     search.setDate(LocalDate.now());
+    searchRepository.save(search);
+}
+public void switchShowSimilar(Search search){
+    search.setShowSimilar(!search.getShowSimilar());
     searchRepository.save(search);
 }
 
@@ -47,6 +54,7 @@ public List<Vehicle> searchNewForUserHistory(Long userid){
     List<Vehicle> vehicles = searches.stream()
             .flatMap(search -> searchNewSimilar(search).stream())
             .collect(Collectors.toList());
+    //может понадобиться отсеять дубликаты
     return vehicles;
 }
 

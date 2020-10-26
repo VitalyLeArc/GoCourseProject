@@ -10,13 +10,28 @@
 <br>
 <button><a th:href="@{/cabinet}">Back</a></button>
 <br>
-<table>
+<table border="1px">
     <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th width="200" height="40">Категория</th>
+        <th width="200" height="40">Марка</th>
+        <th width="200" height="40">Топливо</th>
+        <th width="200" height="40">Кузов</th>
+        <th width="200" height="40">Дата объявления</th>
+        <th width="200" height="40">Отслеживать похожие</th>
+<!--        <th width="200" height="40">Переключить отслеживание</th>-->
     </tr>
+    <tr th:each="h : ${userhistory}" align="center">
+        <td th:text="${h.category}" align="center"></td>
+        <td th:text="${h.mark}" align="center"></td>
+        <td th:text="${h.fuelType}" align="center"></td>
+        <td th:text="${h.body}" align="center"></td>
+        <td th:text="${h.date}" align="center"></td>
+<!--Сделать кнопкой как в уроке по jsp-->
+        <td th:text="${h.showSimilar}" align="center"></td>
+<!--        <td><button formaction="" th:value=""></button></td>-->
+    </tr>
+<!--    Затычка-->
+
 </table>
 </body>
 </html>

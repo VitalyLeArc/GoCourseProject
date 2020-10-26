@@ -48,6 +48,7 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(()->new UsernameNotFoundException("Does not exist ID "+id));
     }
 
+
     public void activateUser (String username){
             User user = getUserByName(username);
             user.setActiveStatus(true);
@@ -58,6 +59,7 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
+    //авторизация
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findUserByLoginname(username).orElseThrow(()->new UsernameNotFoundException("Wrong login or password"));

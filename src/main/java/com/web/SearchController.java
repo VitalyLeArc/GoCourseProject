@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.Principal;
 import java.util.List;
@@ -34,7 +35,7 @@ public class SearchController {
 
     @PostMapping("/search_request")
     public String searchRequest(@ModelAttribute("search")Search search, Principal principal, Model model){
-        log.info(search.toString());
+        log.info("search is " + search.toString());
         List<Vehicle> vehicles = searchService.searchOnRia(search);
         searchService.saveSearchRequestInHistory(search,principal);
         model.addAttribute("vehicles",vehicles);

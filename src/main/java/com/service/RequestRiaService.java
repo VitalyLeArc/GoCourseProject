@@ -37,6 +37,7 @@ class RequestRiaService {
     public List<Vehicle> findOnRia(Search search){
         return doRiaRequestAndGetVehicles(createRiaRequest(search));
     }
+
     /*public List<Vehicle> findNewOnRia(Search search){
         String riaRequest = createRiaRequest(search)+"&"; //Дата публикации больше даты старого поиска
         return doRiaRequestAndGetVehicles(riaRequest);
@@ -60,11 +61,11 @@ class RequestRiaService {
             }
             return vehicles;
         }catch (IOException e){
-            log.error("Error IOException" + e.getMessage());
+            log.error("Error 1 IOException " + e.getMessage());
         }catch (InterruptedException e){
-            log.error("Error Interrupted Exception " + e.getMessage());
+            log.error("Error 2 Interrupted Exception " + e.getMessage());
         }catch (Exception e){
-            log.error("Error "+ e.getMessage());
+            log.error("Error 3 "+ e.getMessage());
         }
         return null;
     }

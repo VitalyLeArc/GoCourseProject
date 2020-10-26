@@ -23,7 +23,8 @@ public class UserController {
     public String getAllUsers(Model model, Principal principal){
         if(userService.getUserRoleByName(principal.getName())== UserRole.ADMIN) {
             model.addAttribute("users", userService.findAllUser(principal)
-                    .stream().map((u) -> u.getLoginname()).collect(Collectors.toList()));
+                    .stream().map((u) -> u.getLoginname())
+                    .collect(Collectors.toList()));
         }
         return "users";
     }

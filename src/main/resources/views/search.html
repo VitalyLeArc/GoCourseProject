@@ -8,26 +8,26 @@
 <body>
 <button><a href="/">Home</a></button>
 <form action="#" th:action="@{/search_request}" th:object="${search}" method="post">
-    <p>Now only PKW available!<input id="categoryID" name="categoryID" value = "1" hidden = "true"/></p>
+    <p>Select parameters of car<input id="categoryID" name="categoryID" value = "1" hidden = "true"/></p>
     <p>Body Type:
-        <select id="bodyID" name="bodyID">
-            <option selected value="-1">!! Select !!</option>
+        <select id="body" name="body">
+            <option selected value="-1">Select</option>
             <th:block th:each="body : ${carBody}">
                 <option th:value="${body.getValue()}" th:utext="${body.getName()}"></option>
             </th:block>
         </select>
 
     <p>Mark:
-        <select id="markID" name="markID">
-            <option selected value="-1">!! Select !!</option>
+        <select id="mark" name="mark">
+            <option selected value="-1">Select</option>
             <th:block th:each="mark : ${marks}">
                 <option th:value="${mark.getValue()}" th:utext="${mark.getName()}"></option>
             </th:block>
         </select>
 
     <p>Type of fuel:
-        <select id="fuelTypeID" name="fuelTypeID">
-            <option selected value="-1">!! Select !!</option>
+        <select id="fuelType" name="fuelType">
+            <option selected value="-1">Select</option>
             <th:block th:each="fuelType : ${fuelTypes}">
                 <option th:value="${fuelType.getValue()}" th:utext="${fuelType.getName()}"></option>
             </th:block>
@@ -35,6 +35,5 @@
     </p>
     <input type="submit" value="Search">
 </form>
-<button><a href="/search_request">hardcode simple request</a></button>
 </body>
 </html>

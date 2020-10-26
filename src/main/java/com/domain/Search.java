@@ -4,21 +4,20 @@ import com.domain.parts.CarBody;
 import com.domain.parts.FuelType;
 import com.domain.parts.Marks;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
-
 @Entity
 @Table(name="history")
 public class Search {
     @Id
     @Column(name = "id")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
     @Column(name = "user_id")
@@ -54,5 +53,9 @@ public class Search {
             sb.append(Marks.getNameByValue(mark));
         }
         return sb.toString();
+    }
+
+    public boolean getShowSimilar(){
+        return showSimilar;
     }
 }

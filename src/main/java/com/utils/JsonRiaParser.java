@@ -22,7 +22,8 @@ public class JsonRiaParser {
         vehicle.setMarkName(jsonObject.getString("markName"));
         vehicle.setModelName(jsonObject.getString("modelName"));
         vehicle.setCostUsd(jsonObject.getInt("USD"));
-        vehicle.setAddDate(LocalDate.parse(jsonObject.getString("addDate")));
+        vehicle.setAddDate(LocalDate.parse(jsonObject.getString("addDate")
+                            .split(" ")[0])); //Дата приходит в формате 2020-10-12 15:44:16
         return vehicle;
     }
     //Из всего жсона с результатами поиска по фильтру на риа выдирает только айди объявлений

@@ -1,5 +1,6 @@
 package com;
 
+import com.domain.parts.CarBody;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
