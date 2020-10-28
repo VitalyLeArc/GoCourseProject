@@ -25,7 +25,4 @@ public class SearchString {
 
     private String date;
 
-    public String getCategory() {
-        return category;
-    }
 }

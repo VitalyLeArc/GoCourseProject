@@ -8,7 +8,7 @@
 <body>
 <button><a href="/">Home</a></button>
 <form action="#" th:action="@{/search_request}" th:object="${search}" method="post">
-    <p>Select parameters of car<input id="categoryID" name="categoryID" value = "1" hidden = "true"/></p>
+    <p>Select parameters of car<input id="category" name="category" value = "1" hidden = "true"/></p>
     <p>Body Type:
         <select id="body" name="body">
             <option selected value="-1">Select</option>

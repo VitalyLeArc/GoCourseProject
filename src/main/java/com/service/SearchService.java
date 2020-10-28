@@ -26,11 +26,10 @@ private RequestRiaService requestRiaService;
 public List<Vehicle> searchOnRia(Search reqSearch){
     return requestRiaService.findOnRia(reqSearch);
 }
-//не проверял
 public void saveSearchRequestInHistory(Search search, Principal principal){
     search.setUserId(userService.getUserIdByName(principal.getName()));
     search.setShowSimilar(true);
-    log.info("mark"+search.getMark());
+    log.info("body "+search.getBody()+" similar "+search.getShowSimilar()+" category "+search.getCategory());
     saveSearch(search);
 }
 private void saveSearch(Search search){

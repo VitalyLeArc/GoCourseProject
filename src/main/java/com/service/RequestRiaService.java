@@ -51,7 +51,6 @@ class RequestRiaService {
                     .getListVehiclesIdFromRiaJson(doRiaRequest(request));
             List<String> vehiclesJson = new ArrayList<>();
             for (String v:vehicles_id) {
-//              log.info(v);
                 vehiclesJson.add(doRiaRequest(createRiaVehicleRequest(v)));
             }
             List<Vehicle> vehicles = new ArrayList<>();

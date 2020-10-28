@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Data
 @Entity
 @Table(name="history")
+@Data
 public class Search {
     @Id
     @Column(name = "id")
@@ -41,6 +41,14 @@ public class Search {
     @Column(name = "date")
     private LocalDate date;
 
+    public boolean getShowSimilar() {
+        return showSimilar;
+    }
+
+    public void setShowSimilar(boolean showSimilar) {
+        this.showSimilar = showSimilar;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -51,11 +59,10 @@ public class Search {
             sb.append(FuelType.getNameByValue(fuelType));
             sb.append(", марка: ");
             sb.append(Marks.getNameByValue(mark));
+            sb.append(", similar: ");
+            sb.append(showSimilar);
         }
         return sb.toString();
     }
 
-    public boolean getShowSimilar(){
-        return showSimilar;
-    }
 }
